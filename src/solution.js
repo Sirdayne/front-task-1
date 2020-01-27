@@ -6,7 +6,7 @@ const solution = function(graph, start, finish)  {
     const setFirstStar = (value) => {
         let star = getStar(value);
         star.distance = 0;
-        star.path = [START];
+        star.path = [start];
     };
 
     const getStarsFromGraph = (graph) => {
@@ -40,11 +40,11 @@ const solution = function(graph, start, finish)  {
 
     const stars = getStarsFromGraph(graph);
     
-    setFirstStar(START);
+    setFirstStar(start);
 
-    let points = [START];
+    let points = [start];
 
-    while (getStar(FINISH).distance === Infinity) {
+    while (getStar(finish).distance === Infinity) {
         let newPoints = []
         points.forEach(point => {
             newPoints = findStar(point, newPoints);
@@ -52,5 +52,5 @@ const solution = function(graph, start, finish)  {
         points = newPoints.slice();
     };
     
-    return getStar(FINISH);
+    return getStar(finish);
 }
